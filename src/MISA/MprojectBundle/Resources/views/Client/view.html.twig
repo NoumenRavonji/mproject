@@ -9,7 +9,20 @@
     {% endfor %}
 	{% endfor %}
 	<div>
-		<p>Nom: {{ client.nom }}</p>
+		<h3>Client</h3>
+		<p><b>Nom:</b> {{ client.nom }}</p>
+		<p>
+			<b>Projets :</b>
+			{% if client.projects is not empty %}
+			<ul>
+				{% for project in client.projects %}
+					<li><a href="{{ path('misa_project_view', {'id': project.id } )}}">{{ project.nom }}</a></li>
+				{% endfor %}
+			</ul>
+			{% else %}
+			<i> pas de projet </i>
+		{% endif %}
+		</p>
 	</div>
 
 	<a href="{{ path('misa_mproject')}}"><span class="btn btn-success"><span class="glyphicon glyphicon-chevron-left"> </span> Retour à la liste</span></a>

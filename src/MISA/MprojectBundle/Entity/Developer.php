@@ -17,7 +17,7 @@ class Developer
 
     /**
     *@ORM\OneToMany(targetEntity="MISA\MprojectBundle\Entity\Assignation", cascade={"persist"}, mappedBy="developer")
-    *@ORM\JoinColumn(nullable=true)
+    *@ORM\JoinColumn(onDelete="CASCADE")
     */
     private $assignations; 
 
@@ -135,6 +135,7 @@ class Developer
      */
     public function __construct()
     {
+        $this->dateEntree = new \DateTime();
         $this->assignations = new \Doctrine\Common\Collections\ArrayCollection();
     }
 

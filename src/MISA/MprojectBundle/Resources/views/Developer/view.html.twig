@@ -9,9 +9,17 @@
     {% endfor %}
 	{% endfor %}
 	<div>
-		<p>Nom: {{ developer.nom }}</p>
-		<p>Compétences: {{ developer.competence }}</p>
-		<p>Date d'entrée dans l'entreprise : {{ developer.dateEntree|date('d/m/Y') }}</p>
+		<h3>Développeur</h3>
+		<p><b>Nom:</b> {{ developer.nom }}</p>
+		<p><b>Compétences:</b> {{ developer.competence }}</p>
+		<p><b>Date d'entrée dans l'entreprise :</b> {{ developer.dateEntree|date('d/m/Y') }}</p>
+		<p><b>Projets :</b> 
+			<ul>
+				{% for assignation in developer.assignations %}
+				<li><a href="{{ path('misa_project_view', {'id': assignation.project.id }) }}">{{ assignation.project.nom }}</a></li>
+				{% endfor %}
+			</ul>	
+		</p>
 	</div>
 
 	<a href="{{ path('misa_mproject')}}"><span class="btn btn-success"><span class="glyphicon glyphicon-chevron-left"> </span> Retour à la liste</span></a>

@@ -12,15 +12,18 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Project
 {
+    public function __construct(){
+        $this->dateLivraison = new \Datetime();
+    }
     /**
     *@ORM\OneToOne(targetEntity="MISA\MprojectBundle\Entity\Assignation", mappedBy="project", cascade={"persist"} )
-    *@ORM\JoinColumn(nullable=true)
+    *@ORM\JoinColumn(onDelete="SET NULL")
     */
     private $assignation;
 
     /**
-    *@ORM\ManyToOne(targetEntity="MISA\MprojectBundle\Entity\Client", cascade={"persist"})
-    *@ORM\JoinColumn(nullable=false)
+    *@ORM\ManyToOne(targetEntity="MISA\MprojectBundle\Entity\Client", cascade={"persist"}, inversedBy="projects")
+    *@ORM\JoinColumn(onDelete="SET NULL")
     */
     private $client;
 

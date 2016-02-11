@@ -13,7 +13,7 @@ class MprojectController extends Controller
 {
     public function indexAction()
     {
-        $em =   $this->getDoctrine()->getEntityManager();
+        $em =   $this->getDoctrine()->getManager();
         $projects = $em->getRepository("MISAMprojectBundle:Project")
                         ->findWithClient();
 

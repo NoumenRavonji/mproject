@@ -14,13 +14,13 @@ class Assignation
 {
     /**
     *@ORM\ManyToOne(targetEntity="MISA\MprojectBundle\Entity\Developer", inversedBy="assignations", cascade={"persist"} )
-    *@ORM\JoinColumn(nullable=true)
+    *@ORM\JoinColumn(onDelete="CASCADE")
     */
     private $developer; 
 
     /**
     *@ORM\OneToOne(targetEntity="MISA\MprojectBundle\Entity\Project", inversedBy="assignation", cascade={"persist"} )
-    *@ORM\JoinColumn(nullable=true)
+    *@ORM\JoinColumn(onDelete="CASCADE")
     */
     private $project;
 

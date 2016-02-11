@@ -32,7 +32,7 @@ class ClientController extends Controller
 
             $request->getSession()->getFlashBag()->add('notice','Projet bien enregistré');
 
-            return $this->redirect($this->generateUrl('misa_client_homepage'));
+            return $this->redirect($this->generateUrl('misa_mproject'));
         }
         return $this->render('MISAMprojectBundle:Client:add.html.twig', array(
             'form' => $form->createView()
@@ -95,6 +95,6 @@ class ClientController extends Controller
         $em->flush();
         $request->getSession()->getFlashBag()->add('notice','Projet bien supprimé');
 
-        return $this->redirectToRoute('misa_client_homepage');
+        return $this->redirectToRoute('misa_mproject');
     }
 }

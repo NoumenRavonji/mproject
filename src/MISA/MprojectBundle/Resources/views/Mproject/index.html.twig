@@ -39,7 +39,7 @@
 				<td>
 					<a href="{{ path('misa_project_view',{'id': project.id}) }}"><span class='btn btn-sm btn-success'><span class="glyphicon glyphicon-search"></span> </span></a>
 					<a href="{{ path('misa_project_edit',{'id': project.id}) }}"><span class='btn btn-sm btn-warning'><span class="glyphicon glyphicon-edit"></span></span></a>
-					<a href="{{ path('misa_project_delete',{'id': project.id}) }}"><span class='btn btn-sm btn-danger'><span class="glyphicon glyphicon-trash"></span> </span></a>
+					<a href="{{ path('misa_project_delete',{'id': project.id}) }}" onclick="return confirm('are u sure?')"><span class='btn btn-sm btn-danger'><span class="glyphicon glyphicon-trash"></span> </span></a>
 				</td>
 			</tr>
 		
@@ -135,7 +135,7 @@
 				<td>
 					<a href="{{ path('misa_developer_view',{'id': developer.id}) }}"><span class='btn btn-sm btn-success'><span class="glyphicon glyphicon-search"></span> </span></a>
 					<a href="{{ path('misa_developer_edit',{'id': developer.id}) }}"><span class='btn btn-sm btn-warning'><span class="glyphicon glyphicon-edit"></span></span></a>
-					<a href="{{ path('misa_developer_delete',{'id': developer.id}) }}"><span class='btn btn-sm btn-danger'><span class="glyphicon glyphicon-trash"></span> </span></a>
+					<a href="{{ path('misa_developer_delete',{'id': developer.id}) }}" onclick="return confirm('are u sure?')"><span class='btn btn-sm btn-danger'><span class="glyphicon glyphicon-trash"></span> </span></a>
 				</td>
 			</tr>
 		
@@ -166,7 +166,7 @@
 				<td>
 					<a href="{{ path('misa_client_view',{'id': client.id}) }}"><span class='btn btn-success'><span class="glyphicon glyphicon-search"></span></span></a>
 					<a href="{{ path('misa_client_edit',{'id': client.id}) }}"><span class='btn btn-warning'><span class="glyphicon glyphicon-edit"></span></span></a>
-					<a href="{{ path('misa_client_delete',{'id': client.id}) }}"><span class='btn btn-danger'><span class="glyphicon glyphicon-trash"></span></span></a>
+					<a href="{{ path('misa_client_delete',{'id': client.id}) }}" onclick="return confirm('are u sure?')"><span class='btn btn-danger'><span class="glyphicon glyphicon-trash"></span></span></a>
 				</td>
 			</tr>
 		
@@ -216,15 +216,6 @@
 				        // alert("Data: " + data + "\nStatus: " + status);
 				        nb.text(data);
 				    });
-
- 						// $.post("{{ path('misa_mproject_assign') }}",
-					  //   {
-					  //       name: "Donald Duck",
-					  //       city: "Duckburg"
-					  //   },
-					  //   function(data, status){
-					  //       alert("Data: " + data + "\nStatus: " + status);
-					  //   });
  					 current.fadeOut();
  				}
  			});

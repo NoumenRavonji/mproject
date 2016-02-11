@@ -9,11 +9,20 @@
     {% endfor %}
 	{% endfor %}
 	<div>
-		<p>Nom du projet : {{ project.nom }}</p>
-		<p>Date de livraison : {{ project.dateLivraison|date('d/m/Y') }}</p>
-		<p>Type: {{ project.type }}</p>
-		<p>Langages utilisés: {{ project.langages }}</p>
-		<p>Etat du projet : {{ project.etat }}</p>
+		<h3>Projet</h3>
+		<p><b>Nom du projet :</b> {{ project.nom }}</p>
+		<p><b>Nom du client :</b> <a href="{{ path('misa_client_view', {'id': project.client.id }) }}">{{ project.client.nom }}</a></p>
+		<p><b>Date de livraison :</b> {{ project.dateLivraison|date('d/m/Y') }}</p>
+		<p><b>Type:</b> {{ project.type }}</p>
+		<p><b>Langages utilisés:</b> {{ project.langages }}</p>
+		<p><b>Etat du projet :</b> {{ project.etat }}</p>
+		<p><b>Développeur :</b>
+			{% if project.assignation is not empty %}
+				<a href="">{{ project.assignation.developer.nom }}</a>
+				{% else %}
+				<i>Non assigné</i>
+			{% endif %}
+		</p>
 	</div>
 
 	<a href="{{ path('misa_mproject')}}"><span class="btn btn-success"><span class="glyphicon glyphicon-chevron-left"> </span> Retour à la liste</span></a>

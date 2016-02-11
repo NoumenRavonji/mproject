@@ -13,9 +13,11 @@ use Doctrine\Common\Collections\ArrayCollection;
  */
 class Developer
 {
+   
+
     /**
     *@ORM\OneToMany(targetEntity="MISA\MprojectBundle\Entity\Assignation", cascade={"persist"}, mappedBy="developer")
-    *@ORM\JoinColumn(nullable=true)
+    *@ORM\JoinColumn(onDelete="CASCADE")
     */
     private $assignations; 
 
@@ -133,9 +135,47 @@ class Developer
      */
     public function __construct()
     {
+        $this->dateEntree = new \DateTime();
         $this->assignations = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
 
   
+
+    /**
+     * Add assignations
+     *
+     * @param \MISA\MprojectBundle\Entity\Assignation $assignations
+     * @return Developer
+     */
+    public function addAssignation(\MISA\MprojectBundle\Entity\Assignation $assignations)
+    {
+        $this->assignations[] = $assignations;
+
+        return $this;
+    }
+
+    /**
+     * Remove assignations
+     *
+     * @param \MISA\MprojectBundle\Entity\Assignation $assignations
+     */
+    public function removeAssignation(\MISA\MprojectBundle\Entity\Assignation $assignations)
+    {
+        $this->assignations->removeElement($assignations);
+    }
+
+    /**
+     * Get assignations
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getAssignations()
+    {
+        return $this->assignations;
+    }
+
+    public function getNbProject(){
+        return count($this->getAssignations);
+    }
 }

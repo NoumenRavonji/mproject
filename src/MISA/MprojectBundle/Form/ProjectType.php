@@ -24,7 +24,13 @@ class ProjectType extends AbstractType
             ->add('dateLivraison', 'datetime')
             ->add('type', "text")
             ->add('langages', "text")
-            ->add('etat', "text")
+            ->add('etat', 'choice', array(
+                'choices' => array(
+                    0 => "n'a pas encore commencé",
+                    1 => 'en cours',
+                    2 => 'términé'
+                ),
+                'data' => 0))
             ->add('save', "submit")
             // ->add('assignation')
             // ->add('client')
