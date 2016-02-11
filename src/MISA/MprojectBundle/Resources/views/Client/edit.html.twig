@@ -1,0 +1,21 @@
+{% extends "MISAMprojectBundle::layout.html.twig"%}
+
+{% block content %}
+	{{ include("MISAMprojectBundle:Project:form.html.twig") }}
+
+	<div class="col-sm-4">
+
+        {{ form_widget(form.Modifier, {'attr': {'class': 'btn btn-success'}}) }}
+
+        <a href="{{ path('misa_mproject') }}"><span class="btn btn-warning">Annuler</span></a>
+
+      </div>
+
+	</div>
+	 
+{{ form_rest(form) }}
+{{ form_end(form) }}
+
+</div>
+	
+{% endblock %}

@@ -1,0 +1,180 @@
+<?php
+
+namespace MISA\MprojectBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
+
+/**
+ * Developer
+ *
+ * @ORM\Table()
+ * @ORM\Entity(repositoryClass="MISA\MprojectBundle\Entity\DeveloperRepository")
+ */
+class Developer
+{
+   
+
+    /**
+    *@ORM\OneToMany(targetEntity="MISA\MprojectBundle\Entity\Assignation", cascade={"persist"}, mappedBy="developer")
+    *@ORM\JoinColumn(nullable=true)
+    */
+    private $assignations; 
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nom", type="string", length=255)
+     */
+    private $nom;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="competence", type="string", length=255)
+     */
+    private $competence;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date_entree", type="datetime")
+     */
+    private $dateEntree;
+
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set nom
+     *
+     * @param string $nom
+     * @return Developer
+     */
+    public function setNom($nom)
+    {
+        $this->nom = $nom;
+
+        return $this;
+    }
+
+    /**
+     * Get nom
+     *
+     * @return string 
+     */
+    public function getNom()
+    {
+        return $this->nom;
+    }
+
+    /**
+     * Set competence
+     *
+     * @param string $competence
+     * @return Developer
+     */
+    public function setCompetence($competence)
+    {
+        $this->competence = $competence;
+
+        return $this;
+    }
+
+    /**
+     * Get competence
+     *
+     * @return string 
+     */
+    public function getCompetence()
+    {
+        return $this->competence;
+    }
+
+    /**
+     * Set dateEntree
+     *
+     * @param \DateTime $dateEntree
+     * @return Developer
+     */
+    public function setDateEntree($dateEntree)
+    {
+        $this->dateEntree = $dateEntree;
+
+        return $this;
+    }
+
+    /**
+     * Get dateEntree
+     *
+     * @return \DateTime 
+     */
+    public function getDateEntree()
+    {
+        return $this->dateEntree;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->assignations = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+
+  
+
+    /**
+     * Add assignations
+     *
+     * @param \MISA\MprojectBundle\Entity\Assignation $assignations
+     * @return Developer
+     */
+    public function addAssignation(\MISA\MprojectBundle\Entity\Assignation $assignations)
+    {
+        $this->assignations[] = $assignations;
+
+        return $this;
+    }
+
+    /**
+     * Remove assignations
+     *
+     * @param \MISA\MprojectBundle\Entity\Assignation $assignations
+     */
+    public function removeAssignation(\MISA\MprojectBundle\Entity\Assignation $assignations)
+    {
+        $this->assignations->removeElement($assignations);
+    }
+
+    /**
+     * Get assignations
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getAssignations()
+    {
+        return $this->assignations;
+    }
+
+    public function getNbProject(){
+        return count($this->getAssignations);
+    }
+}

@@ -1,0 +1,27 @@
+{% extends "MISAMprojectBundle::layout.html.twig"%}
+
+{% block content %}
+	<center><h3>Ajouter un client</h3></center>
+		{{ include("MISAMprojectBundle:Client:form.html.twig") }}
+	<div class="col-sm-4">
+
+        {{ form_widget(form.Ajouter, {'attr': {'class': 'btn btn-primary'}}) }}
+
+        <a href="{{ path('misa_mproject') }}"><span class="btn btn-warning">Annuler</span></a>
+
+      </div>
+
+	</div>
+	 
+
+{{ form_rest(form) }}
+{{ form_end(form) }}
+
+
+
+
+</div>
+
+
+	
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends "MISAMprojectBundle::layout.html.twig"%}
+
+{% block content %}
+	<center><h3>Ajouter un projet</h3></center>
+		{{ include("MISAMprojectBundle:Project:form.html.twig") }}
+	 
+
+{{ form_rest(form) }}
+{{ form_end(form) }}
+
+
+
+
+</div>
+
+
+	
+{% endblock %}

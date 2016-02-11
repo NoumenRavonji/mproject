@@ -1,0 +1,4 @@
+services:
+#    misa_mproject.example:
+#        class: MISA\MprojectBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]

@@ -1,0 +1,92 @@
+misa_mproject:
+    path:   /
+    defaults: {_controller: MISAMprojectBundle:Mproject:index}
+
+misa_mproject_assign:
+    path: /mproject/assign
+    defaults: {_controller: MISAMprojectBundle:Mproject:assignProject}
+    methods: [POST]
+
+misa_project_homepage:
+    path:     /project/
+    defaults: { _controller: MISAMprojectBundle:Project:index }
+
+misa_project_add:
+    path:     /project/add
+    defaults: { _controller: MISAMprojectBundle:Project:add }
+
+misa_project_view:
+    path:     /project/view/{id}
+    defaults: { _controller: MISAMprojectBundle:Project:view }
+    requirements:
+         id: \d+
+
+misa_project_edit:
+    path:     /project/edit/{id}
+    defaults: { _controller: MISAMprojectBundle:Project:edit }
+    requirements:
+         id: \d+
+
+misa_project_delete:
+    path:     /project/delete/{id}
+    defaults: { _controller: MISAMprojectBundle:Project:delete }
+    requirements:
+         id: \d+
+
+
+
+
+misa_client_homepage:
+    path:     /client/
+    defaults: { _controller: MISAMprojectBundle:Client:index }
+
+misa_client_add:
+    path:     /client/add
+    defaults: { _controller: MISAMprojectBundle:Client:add }
+
+misa_client_view:
+    path:     /client/view/{id}
+    defaults: { _controller: MISAMprojectBundle:Client:view }
+    requirements:
+         id: \d+
+
+misa_client_edit:
+    path:     /client/edit/{id}
+    defaults: { _controller: MISAMprojectBundle:Client:edit }
+    requirements:
+         id: \d+
+
+misa_client_delete:
+    path:     /client/delete/{id}
+    defaults: { _controller: MISAMprojectBundle:Client:delete }
+    requirements:
+         id: \d+
+
+
+
+misa_developer_homepage:
+    path:     /developer/
+    defaults: { _controller: MISAMprojectBundle:Developer:index }
+
+misa_developer_add:
+    path:     /developer/add
+    defaults: { _controller: MISAMprojectBundle:Developer:add }
+
+misa_developer_view:
+    path:     /developer/view/{id}
+    defaults: { _controller: MISAMprojectBundle:Developer:view }
+    requirements:
+         id: \d+
+
+misa_developer_edit:
+    path:     /developer/edit/{id}
+    defaults: { _controller: MISAMprojectBundle:Developer:edit }
+    requirements:
+         id: \d+
+
+misa_developer_delete:
+    path:     /developer/delete/{id}
+    defaults: { _controller: MISAMprojectBundle:Developer:delete }
+    requirements:
+         id: \d+
+

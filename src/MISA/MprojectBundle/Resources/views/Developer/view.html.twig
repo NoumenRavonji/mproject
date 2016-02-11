@@ -1,0 +1,20 @@
+{% extends "MISAMprojectBundle::layout.html.twig"%}
+
+{% block content %}
+	{% for label, flashes in app.session.flashbag.all %}
+    {% for flash in flashes %}
+        <div class="alert alert-success">
+            {{ flash }}
+        </div>
+    {% endfor %}
+	{% endfor %}
+	<div>
+		<p>Nom: {{ developer.nom }}</p>
+		<p>Compétences: {{ developer.competence }}</p>
+		<p>Date d'entrée dans l'entreprise : {{ developer.dateEntree|date('d/m/Y') }}</p>
+	</div>
+
+	<a href="{{ path('misa_mproject')}}"><span class="btn btn-success"><span class="glyphicon glyphicon-chevron-left"> </span> Retour à la liste</span></a>
+	<a href="{{ path('misa_developer_edit', { 'id': developer.id })}}"><span class='btn btn-warning'><span class="glyphicon glyphicon-pencil"></span> Modifier</span></a>
+	<a href="{{ path('misa_developer_delete', { 'id': developer.id })}}"><span class='btn btn-danger'><span class="glyphicon glyphicon-remove"> </span> Supprimer</span></a>
+{% endblock %}

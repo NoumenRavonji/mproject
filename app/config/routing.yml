@@ -1,0 +1,7 @@
+misa_mproject:
+    resource: "@MISAMprojectBundle/Resources/config/routing.yml"
+    prefix:   /
+
+app:
+    resource: "@AppBundle/Controller/"
+    type:     annotation
