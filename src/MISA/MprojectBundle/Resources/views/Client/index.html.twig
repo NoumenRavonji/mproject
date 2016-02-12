@@ -1,1 +1,30 @@
-project index
+{% extends "MISAMprojectBundle::layout.html.twig" %}
+ {% block content %}
+
+ 	<h3>Tous les clients</h3>
+			<table>
+				<thead>
+					<tr class="info">
+						{# <td></td> #}
+							<th>Nom</th>
+							<th>Actions</th>
+					</tr>
+				</thead>
+		{% for client in clients %}
+				
+				<tr>
+					{# <td></td> #}
+					<td>{{ client.nom|upper }}</td>
+					<td>
+						<a href="{{ path('misa_client_view',{'id': client.id}) }}"><span class='btn-green'>Voir</span></a>
+						<a href="{{ path('misa_client_edit',{'id': client.id}) }}"><span class='btn-orange'>Modifier</span></a>
+						<a href="{{ path('misa_client_delete',{'id': client.id}) }}" onclick="return confirm('are u sure?')"><span class='btn-red'>Supprimer</span></a>
+					</td>
+				</tr>
+			
+		{% endfor %}
+		</table>
+
+		<a href="{{ path('misa_client_add') }}"><span class="btn-blue"> <b>+</b> Ajouter</span></a>
+
+ {% endblock %}

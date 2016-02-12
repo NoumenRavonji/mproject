@@ -8,46 +8,44 @@
 
   {% block stylesheets %}
 
-    <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}" type="text/css" />
     <link rel="stylesheet" href="{{ asset('css/jquery-ui.css') }}" type="text/css" />
+    <link rel="stylesheet" href="{{ asset('assets/stylesheets/style.css') }}" type="text/css" />
    
 
   {% endblock %}
-  <script src="{{ asset('js/jquery.min.js') }}"></script>
+  <script src="{{ asset('js/jquery-latest.js') }}"></script>
+  <script src="{{ asset('js/jquery.tablesorter.js') }}"></script>
   <script src="{{ asset('js/jquery-ui.js') }}"></script>
  
-  <script src="{{ asset('js/jquery.tablesorter.js') }}"></script>
-  <style type="text/css">
-  .help{
-      border : 1px solid #1877D5;
-      background : #84BEFD;
-      opacity : 0.3;
-      }
-  </style>
 </head>
 
 
 <body>
 
-  <div class="container">
+    <header>
 
-    <div id="header">
-
-      <h2 style="width: 20%; display: inline-block"><img width="80"class=".img-responsive" src="{{ asset('images/project.png')}}"></span> MProject</h2>
+      <h2 style="width: 20%; display: inline-block">{# <img width="80" src="{{ asset('images/project.png')}}"> #}MProject</h2>
 
       <span style="display: inline-block; position: relative; top: 20px; font-size:0.9em;">
        <i>...Gérer vos projets informatiques</i>
       </span>
 
 
-    </div>
-    <hr>
+    </header>
 
 
-    <div class="row">
+    <nav>
+      <ul>
+          <li><a href="{{ path('misa_project_homepage') }}" class="{% if app.request.attributes.get('_route') == 'misa_project_homepage' %}active{% endif %}">PROJETS</a></li>
+          <li><a href="{{ path('misa_mproject') }}" class="{% if app.request.attributes.get('_route') == 'misa_mproject' %}active{% endif %}">ASSIGNATIONS</a></li>
+          <li><a href="{{ path('misa_developer_homepage') }}" class="{% if app.request.attributes.get('_route') == 'misa_developer_homepage' %}active{% endif %}">DEVELOPPEURS</a></li>
+          <li><a href="{{ path('misa_client_homepage') }}" class="{% if app.request.attributes.get('_route') == 'misa_client_homepage' %}active{% endif %}" >CLIENTS</a></li>
+      </ul>
+    </nav>
 
-      <div id="content" class="col-md-12">
-        
+
+      <div id="content">
+
         {% for label, flashes in app.session.flashbag.all %}
             {% for flash in flashes %}
                 <div class="alert alert-success">
@@ -56,6 +54,7 @@
             {% endfor %}
           {% endfor %}
 
+
         {% block content %}
 
 
@@ -63,10 +62,8 @@
 
       </div>
 
-    </div>
 
-
-    <hr>
+    
 
 
     <footer>
@@ -75,20 +72,15 @@
 
     </footer>
 
-  </div>
-
 
   {% block javascripts %}
 
-    {# Ajoutez ces lignes JavaScript si vous comptez vous servir des fonctionnalités du bootstrap Twitter #}
-
-    
-
-    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
-    
-
   {% endblock %}
-
+  <script type="text/javascript">
+    $(function(){
+      $("table").tablesorter({debug: true});
+    })
+  </script>
 
 </body>
 

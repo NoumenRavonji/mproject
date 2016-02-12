@@ -3,11 +3,11 @@
 {% block content %}
 	{{ include("MISAMprojectBundle:Client:form.html.twig") }}
 
-	<div class="col-sm-4">
+	<div>
 
-        {{ form_widget(form.Modifier, {'attr': {'class': 'btn btn-success'}}) }}
+        {{ form_widget(form.Modifier, {'attr': {'class': 'btn-blue'}}) }}
 
-        <a href="{{ path('misa_mproject') }}"><span class="btn btn-warning">Annuler</span></a>
+        <a href="{{ path('misa_project_homepage') }}"><span class="btn-orange">Annuler</span></a>
 
       </div>
 

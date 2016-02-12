@@ -1,1 +1,47 @@
-project index
+{% extends "MISAMprojectBundle::layout.html.twig" %}
+ {% block content %}
+
+ 	 <h3>Tous les projects</h3>
+	  <table class="table">
+		<thead>
+			<tr data-project="head" class="info">
+				{# <td></td> #}
+					<th data-type="text" >Nom du projet</th>
+					<th>Nom du client</th>
+					<th>Date de livraison</th>
+					<th>Développeur</th>
+					{# <th>Type</th>
+					<th>Langages utilisés</th>
+					<th>Etat</th> #}
+					<th></th>
+			</tr>
+		</thead>
+		<tbody>
+		{% for project in projects %}
+				
+				<tr>
+					{# <td></td> #}
+					<td>{{ project.nom|upper }}</td>
+					<td>{{ project.client.nom }}</td>
+					<td>{{ project.dateLivraison|date("d/m/Y") }}</td>
+					{% if project.assignation is not null %}
+						<td><a href="{{ path('misa_developer_view', {'id':project.assignation.developer.id })}}">{{ project.assignation.developer.nom }}</a></td>
+						{% else %}
+						<td><i>non assigné</i></td>
+					{% endif %}
+					{# <td>{{ project.type }}</td>
+					<td>{{ project.langages }}</td>
+					<td>{{ project.etat }}</td> #}
+					<td>
+						<a href="{{ path('misa_project_view',{'id': project.id}) }}"><span class='btn-green'> Voir</span></a>
+						<a href="{{ path('misa_project_edit',{'id': project.id}) }}"><span class='btn-orange'>Modifier</span></a>
+						<a href="{{ path('misa_project_delete',{'id': project.id}) }}" onclick="return confirm('are u sure?')"><span class='btn-red'>Supprimer </span></a>
+					</td>
+				</tr>
+			
+		{% endfor %}
+		</tbody>
+		</table>
+
+		<a href="{{ path('misa_project_add') }}"><span class="btn-blue"> <b>+</b> Ajouter</span></a>
+{% endblock %}

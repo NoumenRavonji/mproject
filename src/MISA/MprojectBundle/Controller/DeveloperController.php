@@ -11,7 +11,13 @@ class DeveloperController extends Controller
 {
     public function indexAction()
     {
-        return $this->render('MISAMprojectBundle:Developer:index.html.twig');
+        $developers= $this->getDoctrine()->getManager()
+        ->getRepository('MISAMprojectBundle:Developer')
+        ->findAll();
+
+        return $this->render('MISAMprojectBundle:Developer:index.html.twig', array(
+            'developers' => $developers
+            ));
     }
 
     public function addAction(Request $request){
@@ -34,7 +40,7 @@ class DeveloperController extends Controller
 
             $request->getSession()->getFlashBag()->add('notice','Projet bien enregistré');
 
-            return $this->redirect($this->generateUrl('misa_mproject'));
+            return $this->redirect($this->generateUrl('misa_developer_homepage'));
         }
         return $this->render('MISAMprojectBundle:Developer:add.html.twig', array(
             'form' => $form->createView()
@@ -99,6 +105,6 @@ class DeveloperController extends Controller
         $em->flush();
         $request->getSession()->getFlashBag()->add('notice','Projet bien supprimé');
 
-        return $this->redirectToRoute('misa_mproject');
+        return $this->redirectToRoute('misa_project_homepaget');
     }
 }

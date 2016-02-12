@@ -1,173 +1,60 @@
 {% extends "MISAMprojectBundle::layout.html.twig" %}
  {% block content %}
-	
+ 
+	    <h2> Assignations</h2>
+		<p><i>(Vous pouvez glisser un projets non assingné à un développeur)</i></p>
+		<div class="demi">
+			<h4>Projets non assignés</h4>
 
-	<div class='col-sm-6'>
-		<h3>Tous les projects</h3>
-		<table class='table table-bordered table-stripped table-hover'>
-	<thead>
-		<tr data-project="head" class="info">
-			{# <td></td> #}
-				<th data-type="text" >Nom du projet</th>
-				<th>Nom du client</th>
-				<th>Date de livraison</th>
-				{# <th>Type</th>
-				<th>Langages utilisés</th>
-				<th>Etat</th> #}
-				<th></th>
-		</tr>
-	</thead>
-	<tbody>
-	{% for project in projects %}
+			<table id="sort" class='table-bordered'>
+				<thead>
 			
-			<tr>
-				{# <td></td> #}
-				<td>{{ project.nom|upper }}</td>
-				<td>{{ project.client.nom }}</td>
-				<td>{{ project.dateLivraison|date("d/m/Y") }}</td>
-				{# <td>{{ project.type }}</td>
-				<td>{{ project.langages }}</td>
-				<td>{{ project.etat }}</td> #}
-				<td>
-					<a href="{{ path('misa_project_view',{'id': project.id}) }}"><span class='btn btn-sm btn-success'><span class="glyphicon glyphicon-search"></span> </span></a>
-					<a href="{{ path('misa_project_edit',{'id': project.id}) }}"><span class='btn btn-sm btn-warning'><span class="glyphicon glyphicon-edit"></span></span></a>
-					<a href="{{ path('misa_project_delete',{'id': project.id}) }}" onclick="return confirm('are u sure?')"><span class='btn btn-sm btn-danger'><span class="glyphicon glyphicon-trash"></span> </span></a>
-				</td>
-			</tr>
-		
-	{% endfor %}
-	</tbody>
-	</table>
+				</thead>
+				<tbody>
+					{% for project in projects_to_assign %}
+						<tr>
+						
+							<td  class="draggable" id="{{ project.id }}">{{ project.nom|upper }}</td>
 
-	<a href="{{ path('misa_project_add') }}"><span class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> Ajouter</span></a>
-	</div>
+							<td>
+						<a href="{{ path('misa_project_view',{'id': project.id}) }}"><span class='btn-green'> Voir</span></a>
+						
+					</td>
+							
+						</tr>
+					{% endfor %}
 
-<div class="col-sm-12"style="clear: both; margin-top: 3%;">
-	<h3 class="col-sm-12"><span class="glyphicon glyphicon-cog"></span> Assignations</h3>
-	<p><i>(Vous pouvez glisser un projets non assingné à un développeur)</i></p>
-	<div class="col-sm-4">
-		<h4>Projets non assignés</h4>
+				<tbody>
+		</table>
 
-		<table id="sort" class='table table-bordered table-stripped table-hover'>
-			<thead>
-				<tr class="info">
-					{# <td></td> #}
-						<th>Nom du projet</th>
-				</tr>
-			</thead>
-			<tbody>
-				{% for project in projects_to_assign %}
-					<tr class="draggable" id="{{ project.id }}">
-						{# <td></td> #}
-						<td>{{ project.nom|upper }}</td>
-						{# <td>
-							<a href="{{ path('misa_project_view',{'id': project.id}) }}"><span class='btn btn-success'><span class="glyphicon glyphicon-search"></span> Voir</span></a>
-							<a href="{{ path('misa_project_edit',{'id': project.id}) }}"><span class='btn btn-warning'><span class="glyphicon glyphicon-edit"></span> Modifier</span></a>
-							<a href="{{ path('misa_project_delete',{'id': project.id}) }}"><span class='btn btn-danger'><span class="glyphicon glyphicon-trash"></span> Supprimer</span></a>
-						</td> #}
-					</tr>
-				{% endfor %}
-			<tbody>
-	</table>
+		</div>
 
-	</div>
-
-	<div class="col-sm-4">
-		<h4>Développeurs</h4>
-		<table id="sort2" class='table table-bordered table-stripped table-hover'>
-			<thead>
-				<tr class="info">
-					{# <td></td> #}
-						<th>Nom</th>
-						<th>Nombre de projets</th>
-				</tr>
-			</thead>
-			<tbody>
-			{% for developer in developers %}
-					
-					<tr class="droppable" id="{{ developer.id }}">
-						{# <td></td> #}
-						<td>{{ developer.nom|upper }}</td>
-						<td>{{ developer.assignations|length }}</td>
-					</tr>
+		<div class="demi">
+			<h4>Développeurs</h4>
+			<table id="sort2" >
+				<thead>
 				
-			{% endfor %}
-			</tbody>
-	</table>
+				</thead>
+				<tbody>
+				{% for developer in developers %}
+						
+					<tr class="droppable" id="{{ developer.id }}">
+							{# <td></td> #}
+							<td>{{ developer.nom|upper }}</td>
+							<td>({{ developer.assignations|length }})</td>
+						
+						<td>
+						<a href="{{ path('misa_developer_view',{'id': developer.id}) }}"><span class='btn-green'>Voir </span>
+					</td>
+					</tr>
+					
+				{% endfor %}
+				</tbody>
+		</table>
 
-	</div>
+		</div>
+  </div>
 
-</div>
-
-
-	
-
-
-	<div class="col-sm-9">
-		<h3>Tous les développeurs</h3>
-
-		<table id="sort" class='table table-bordered table-stripped table-hover'>
-			<thead>
-				<tr class="info">
-					{# <td></td> #}
-						<th>Nom</th>
-						<th>Compétences</th>
-						<th>Date d'entrée dans l'entreprise</th>
-						<th>Actions</th>
-				</tr>
-			</thead>
-			<tbody>
-	{% for developer in developers %}
-			
-			<tr>
-				{# <td></td> #}
-				<td>{{ developer.nom }}</td>
-				<td>{{ developer.competence }}</td>
-				<td>{{ developer.dateEntree|date("d/m/Y") }}</td>
-				<td>
-					<a href="{{ path('misa_developer_view',{'id': developer.id}) }}"><span class='btn btn-sm btn-success'><span class="glyphicon glyphicon-search"></span> </span></a>
-					<a href="{{ path('misa_developer_edit',{'id': developer.id}) }}"><span class='btn btn-sm btn-warning'><span class="glyphicon glyphicon-edit"></span></span></a>
-					<a href="{{ path('misa_developer_delete',{'id': developer.id}) }}" onclick="return confirm('are u sure?')"><span class='btn btn-sm btn-danger'><span class="glyphicon glyphicon-trash"></span> </span></a>
-				</td>
-			</tr>
-		
-	{% endfor %}
-	</tbody>
-	</table>
-
-	<a href="{{ path('misa_developer_add') }}"><span class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> Ajouter</span></a>
-
-	</div>
-
-
-	<div class="col-sm-5">
-		<h3>Tous les clients</h3>
-		<table class='table table-bordered table-stripped table-hover'>
-			<thead>
-				<tr class="info">
-					{# <td></td> #}
-						<th>Nom</th>
-						<th>Actions</th>
-				</tr>
-			</thead>
-	{% for client in clients %}
-			
-			<tr>
-				{# <td></td> #}
-				<td>{{ client.nom|upper }}</td>
-				<td>
-					<a href="{{ path('misa_client_view',{'id': client.id}) }}"><span class='btn btn-success'><span class="glyphicon glyphicon-search"></span></span></a>
-					<a href="{{ path('misa_client_edit',{'id': client.id}) }}"><span class='btn btn-warning'><span class="glyphicon glyphicon-edit"></span></span></a>
-					<a href="{{ path('misa_client_delete',{'id': client.id}) }}" onclick="return confirm('are u sure?')"><span class='btn btn-danger'><span class="glyphicon glyphicon-trash"></span></span></a>
-				</td>
-			</tr>
-		
-	{% endfor %}
-	</table>
-
-	<a href="{{ path('misa_client_add') }}"><span class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> Ajouter</span></a>
-
-	</div>
 
  {% endblock %}
 
@@ -182,11 +69,22 @@
 				return ui;
 		};
  		$(function(){
- 			$("table").tablesorter({debug: true});
+ 			// $( "#tabs" ).tabs();
  			      
  			$(".draggable").draggable({
  				revert: 'invalid',
- 				cursor: 'move'
+ 				cursor: 'move',
+ 				drag: function(){
+ 					$(this).siblings().hide();
+ 					$(this).css("background-color", "#4CAF50");
+ 					$(this).css("border-radius", "5px");
+ 					$(this).css("color", "white");
+ 				},
+ 				stop: function(){
+ 					$(this).siblings().show();
+ 					$(this).css("background-color", "#fff");
+ 					$(this).css("color", "black");
+ 				}
  			});
 
  			$('.droppable').droppable({
@@ -196,7 +94,7 @@
  					var resultat = $(this);
  					// alert(current.attr('id'));
  					// alert(resultat.attr('id'));
- 					 var nb =resultat.children("td:last");
+ 					 var nb =resultat.children("td:eq(1)");
  					 // alert(parseInt(nb.text())+1);
  					 // var new_nb = parseInt(nb.text())+1;
  					$.post("{{ path('misa_mproject_assign') }}",
@@ -208,6 +106,7 @@
 				        // alert("Data: " + data + "\nStatus: " + status);
 				        nb.text(data);
 				    });
+				    current.siblings().remove();
  					 current.fadeOut();
  				}
  			});

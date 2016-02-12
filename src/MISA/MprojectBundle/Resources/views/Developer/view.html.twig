@@ -22,7 +22,7 @@
 		</p>
 	</div>
 
-	<a href="{{ path('misa_mproject')}}"><span class="btn btn-success"><span class="glyphicon glyphicon-chevron-left"> </span> Retour à la liste</span></a>
-	<a href="{{ path('misa_developer_edit', { 'id': developer.id })}}"><span class='btn btn-warning'><span class="glyphicon glyphicon-pencil"></span> Modifier</span></a>
-	<a href="{{ path('misa_developer_delete', { 'id': developer.id })}}"><span class='btn btn-danger'><span class="glyphicon glyphicon-remove"> </span> Supprimer</span></a>
+	<a href="{{ path('misa_project_homepage')}}"><span class="btn-green"><b><</b> Retour à la liste</span></a>
+	<a href="{{ path('misa_developer_edit', { 'id': developer.id })}}"><span class='btn-orange'> Modifier</span></a>
+	<a href="{{ path('misa_developer_delete', { 'id': developer.id })}}"><span class='btn-red'>Supprimer</span></a>
 {% endblock %}

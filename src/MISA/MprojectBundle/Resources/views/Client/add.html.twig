@@ -3,11 +3,11 @@
 {% block content %}
 	<center><h3>Ajouter un client</h3></center>
 		{{ include("MISAMprojectBundle:Client:form.html.twig") }}
-	<div class="col-sm-4">
+	<div>
 
-        {{ form_widget(form.Ajouter, {'attr': {'class': 'btn btn-primary'}}) }}
+        {{ form_widget(form.Ajouter, {'attr': {'class': 'btn-blue'}}) }}
 
-        <a href="{{ path('misa_mproject') }}"><span class="btn btn-warning">Annuler</span></a>
+        <a href="{{ path('misa_project_homepage') }}"><span class="btn-orange">Annuler</span></a>
 
       </div>
 

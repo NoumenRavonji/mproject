@@ -1,5 +1,5 @@
 misa_mproject:
-    path:   /
+    path:   /assignation
     defaults: {_controller: MISAMprojectBundle:Mproject:index}
 
 misa_mproject_assign:
@@ -8,7 +8,7 @@ misa_mproject_assign:
     methods: [POST]
 
 misa_project_homepage:
-    path:     /project/
+    path:     /
     defaults: { _controller: MISAMprojectBundle:Project:index }
 
 misa_project_add:

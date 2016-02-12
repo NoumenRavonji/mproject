@@ -12,7 +12,13 @@ class ProjectController extends Controller
 {
     public function indexAction()
     {
-        return $this->render('MISAMprojectBundle:Project:index.html.twig');
+        $projects= $this->getDoctrine()->getManager()
+        ->getRepository('MISAMprojectBundle:Project')
+        ->findAll();
+
+        return $this->render('MISAMprojectBundle:Project:index.html.twig', array(
+            'projects' => $projects
+            ));
     }
 
     public function addAction(Request $request){
@@ -39,7 +45,7 @@ class ProjectController extends Controller
 
     		$request->getSession()->getFlashBag()->add('notice','Projet bien enregistré');
 
-    		return $this->redirect($this->generateUrl('misa_mproject'));
+    		return $this->redirect($this->generateUrl('misa_project_homepage'));
     	}
         $clt = $this->getDoctrine()->getManager()->getRepository("MISAMprojectBundle:Client")->findAll();
         if ( count($clt) !=0){
@@ -115,6 +121,6 @@ class ProjectController extends Controller
         $em->flush();
         $request->getSession()->getFlashBag()->add('notice','Projet bien supprimé');
 
-        return $this->redirectToRoute('misa_mproject');
+        return $this->redirectToRoute('misa_project_homepage');
     }
 }

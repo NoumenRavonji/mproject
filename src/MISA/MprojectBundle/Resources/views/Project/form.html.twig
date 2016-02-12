@@ -1,130 +1,52 @@
 <div class="well">
 
-	{{ form_start(form, { 'attr': {'class': 'form-horizontal'} }) }}
+	{{ form_start(form) }}
 
 	{{ form_errors(form) }}
 
 	<div class="form-group">
-		{{ form_label(form.nom, "Nom :", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
-
-
-      {# Affichage des erreurs pour ce champ précis. #}
-
+		{{ form_label(form.nom, "Nom :") }}
       {{ form_errors(form.nom) }}
-
-
-      <div class="col-sm-4">
-
-        {# Génération de l'input. #}
-
-        {{ form_widget(form.nom, {'attr': {'class': 'form-control'}}) }}
-
-      </div>
-
+        {{ form_widget(form.nom) }}
 	</div>
 
   <div class="form-group">
-    {{ form_label(form.client, "Nom du client :", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
-
-
-      {# Affichage des erreurs pour ce champ précis. #}
-
+    {{ form_label(form.client, "Nom du client :") }}
       {{ form_errors(form.client) }}
-
-
-      <div class="col-sm-4">
-
-        {# Génération de l'input. #}
-
-        {{ form_widget(form.client, {'attr': {'class': 'form-control'}}) }}
-
-      </div>
-
+        {{ form_widget(form.client) }}
   </div>
 
 	<div class="form-group">
-		{{ form_label(form.dateLivraison, "Date de livraison :", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
-
-
-      {# Affichage des erreurs pour ce champ précis. #}
-
+		{{ form_label(form.dateLivraison, "Date de livraison :") }}
       {{ form_errors(form.dateLivraison) }}
-
-
-      <div class="col-sm-4">
-
-
-        {{ form_widget(form.dateLivraison) }}
-
-      </div>
-
+        {{ form_widget(form.dateLivraison, {'attr': {'class': 'date'}}) }}
 	</div>
 
 	<div class="form-group">
-    {{ form_label(form.type, "Type :", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
-
-
-      {# Affichage des erreurs pour ce champ précis. #}
-
+    {{ form_label(form.type, "Type :") }}
       {{ form_errors(form.type) }}
-
-
-      <div class="col-sm-4">
-
-        {# Génération de l'input. #}
-
-        {{ form_widget(form.type, {'attr': {'class': 'form-control'}}) }}
-
-      </div>
-
+        {{ form_widget(form.type) }}
   </div>
 
   <div class="form-group">
-    {{ form_label(form.langages, "Langages utilisés :", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
-
-
-      {# Affichage des erreurs pour ce champ précis. #}
-
+    {{ form_label(form.langages, "Langages utilisés :") }}
       {{ form_errors(form.langages) }}
-
-
-      <div class="col-sm-4">
-
-        {# Génération de l'input. #}
-
-        {{ form_widget(form.langages, {'attr': {'class': 'form-control'}}) }}
-
-      </div>
-
+        {{ form_widget(form.langages) }}
   </div>
 
   <div class="form-group">
-    {{ form_label(form.etat, "Etat du projet :", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
-
-
-      {# Affichage des erreurs pour ce champ précis. #}
-
+    {{ form_label(form.etat, "Etat du projet :") }}
       {{ form_errors(form.etat) }}
-
-
-      <div class="col-sm-4">
-
-        {# Génération de l'input. #}
-
-        {{ form_widget(form.etat, {'attr': {'class': 'form-control'}}) }}
-
-      </div>
-
+        {{ form_widget(form.etat) }}
   </div>
 
 
-	<div class="form-group">
-		<div class='col-sm-3'></div>
-      <div class="col-sm-4">
+	<div>
+      <div class="form-group">
 
-        {{ form_widget(form.save, {'attr': {'class': 'btn btn-primary'}}) }}
+        {{ form_widget(form.save, {'attr': {'class': 'btn-blue'}}) }}
 
-        <a href="{{ path('misa_mproject') }}"><span class="btn btn-warning">Annuler</span></a>
+        <a href="{{ path('misa_project_homepage') }}"><span class="btn-orange">Annuler</span></a>
 
       </div>
 

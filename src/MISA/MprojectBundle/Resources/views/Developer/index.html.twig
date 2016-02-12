@@ -1,1 +1,37 @@
-project index
+{% extends "MISAMprojectBundle::layout.html.twig" %}
+ {% block content %}
+
+ 	 <h3>Tous les développeurs</h3>
+
+			<table id="sort" >
+				<thead>
+					<tr class="info">
+						{# <td></td> #}
+							<th>Nom</th>
+							<th>Compétences</th>
+							<th>Date d'entrée dans l'entreprise</th>
+							<th>Actions</th>
+					</tr>
+				</thead>
+				<tbody>
+		{% for developer in developers %}
+				
+				<tr>
+					{# <td></td> #}
+					<td>{{ developer.nom }}</td>
+					<td>{{ developer.competence }}</td>
+					<td>{{ developer.dateEntree|date("d/m/Y") }}</td>
+					<td>
+						<a href="{{ path('misa_developer_view',{'id': developer.id}) }}"><span class='btn-green'>Voir </span></a>
+						<a href="{{ path('misa_developer_edit',{'id': developer.id}) }}"><span class='btn-orange'>Modifier</span></a>
+						<a href="{{ path('misa_developer_delete',{'id': developer.id}) }}" onclick="return confirm('are u sure?')"><span class='btn-red'>Supprimer</span></a>
+					</td>
+				</tr>
+			
+		{% endfor %}
+		</tbody>
+		</table>
+
+		<a href="{{ path('misa_developer_add') }}"><span class="btn-blue"> <b>+</b> Ajouter</span></a>
+
+ {% endblock %}
