@@ -1,13 +1,5 @@
 {% extends "MISAMprojectBundle::layout.html.twig" %}
  {% block content %}
-
- {% for label, flashes in app.session.flashbag.all %}
-    {% for flash in flashes %}
-        <div class="alert alert-success">
-            {{ flash }}
-        </div>
-    {% endfor %}
-	{% endfor %}
 	
 
 	<div class='col-sm-6'>

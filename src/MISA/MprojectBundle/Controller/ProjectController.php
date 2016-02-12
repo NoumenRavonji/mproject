@@ -41,9 +41,16 @@ class ProjectController extends Controller
 
     		return $this->redirect($this->generateUrl('misa_mproject'));
     	}
-    	return $this->render('MISAMprojectBundle:Project:add.html.twig', array(
-    		'form' => $form->createView()
-    		));
+        $clt = $this->getDoctrine()->getManager()->getRepository("MISAMprojectBundle:Client")->findAll();
+        if ( count($clt) !=0){
+            return $this->render('MISAMprojectBundle:Project:add.html.twig', array(
+            'form' => $form->createView()
+            ));
+        }else{
+            $request->getSession()->getFlashBag()->add('notice',"Ajouter d'abord un client");
+            return $this->redirectToRoute('misa_client_add');
+        }
+    	
     }
 
      public function editAction($id, Request $request){
