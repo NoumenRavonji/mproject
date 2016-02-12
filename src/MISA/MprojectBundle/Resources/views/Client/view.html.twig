@@ -27,5 +27,5 @@
 
 	<a href="{{ path('misa_project_homepage')}}"><span class="btn-green"> <b><</b> Retour à la liste</span></a>
 	<a href="{{ path('misa_client_edit', { 'id': client.id })}}"><span class='btn-orange'> Modifier</span></a>
-	<a href="{{ path('misa_client_delete', { 'id': client.id })}}"><span class='btn-red'> Supprimer</span></a>
+	<a href="{{ path('misa_client_delete', { 'id': client.id })}}" onclick="return confirm('are u sure?')"><span class='btn-red'> Supprimer</span></a>
 {% endblock %}
