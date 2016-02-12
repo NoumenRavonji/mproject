@@ -1,0 +1,8 @@
+SUR UBUNTU
+
+- Copier le dossier MProject dans /var/www/html
+- Modifier les droits
+- Créer une base de donnée : mproject
+- Exporter dans cette base de donnée le fichier sql : mproject.sql
+- Changer les paramètres de mysql dans app/config/parameters.yml
+- Lancer dans votre navigateur le lien http://localhost/MProject/web
